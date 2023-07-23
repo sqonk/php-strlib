@@ -18,6 +18,48 @@
 */
 
 
+/**
+ * Translate the given text to a clean representation by removing all control or UTF characters that can
+ * produce unreadable artefacts on various mediums of output such as HTML or PDF.
+ * 
+ * The common characters corrected to standard ASCII are: 
+ * - single quotes
+ * - double quotes
+ * - hyphens
+ * - double hyphens
+ * - ellipsis
+ * 
+ * NOTE: This method is _not identical_ to the strings::clean() method in phext-core. No encoding conversion
+ * is performed.
+ * 
+ * -- parameters:
+ * @param string $text The text to be cleaned.
+ * 
+ * @return string A copy of the modified input with all UTF8 and Windows-1252 characters removed.
+ */
+function str_clean(string $text): string
+{
+    static $replacements = ["'", "'", '"', '"', '-', '--', '...'];
+    
+	// First, replace UTF-8 characters.
+	$text = str_replace(
+        ["\xe2\x80\x98", "\xe2\x80\x99", "\xe2\x80\x9c", "\xe2\x80\x9d", "\xe2\x80\x93", "\xe2\x80\x94", "\xe2\x80\xa6"],
+	 	$replacements,
+	 	$text
+	);
+
+	// Next, replace their Windows-1252 equivalents.
+	$text = str_replace(
+        [chr(145), chr(146), chr(147), chr(148), chr(150), chr(151), chr(133)],
+	 	$replacements,
+	 	$text
+	);
+    
+    $text = preg_replace("/[^\x0A\x20-\x7E]/", '', $text);
+
+	return trim($text);
+}
+
 
 /**
  * Modify a string by splitting it by the given delimiter and popping `$amount` of elements off of the end.

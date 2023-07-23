@@ -132,7 +132,7 @@ function generateForClass($cl)
 
 function genGlobals()
 {
-    $methods = ['str_multipop', 'str_multishift', 'str_popex', 'str_shiftex'];
+    $methods = ['str_multipop', 'str_multishift', 'str_popex', 'str_shiftex', 'str_clean'];
     $name = 'strings';
         
     $out = new SplFileObject(sprintf("%s/api/%s.md", __DIR__, $name), 'w+');

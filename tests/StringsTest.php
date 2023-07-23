@@ -107,5 +107,17 @@ class StringsTest extends TestCase
         $this->assertSame('1,2,3,4,5,6', $str);
         $this->assertSame('', $item);
     }
+    
+    public function testClean(): void 
+    {
+        $exp = "'ab\"c-12...3";
+        
+        # test Windows-1252 char removal.
+        $input = chr(145)."ab".chr(147)."c".chr(150)."12".chr(133)."3";
+        $this->assertSame(expected:$exp, actual:str_clean($input));
+        
+        # test UTF-8 char removal
+        $input = "\xe2\x80\x98ab\xe2\x80\x9cc\xe2\x80\x9312\xe2\x80\xa63";
+        $this->assertSame(expected:$exp, actual:str_clean($input));
     }
 }

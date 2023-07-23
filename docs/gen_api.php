@@ -148,7 +148,8 @@ function genGlobals()
     foreach ($methods as $m)
     {
         $method = new ReflectionFunction($m);
-        $out->fwrite("##### $m\n");
+        $m_str = str_replace(subject:$m, search:'_', replace:'\_');
+        $out->fwrite("##### {$m_str}\n");
         $out->fwrite("```php\n");
         
         $params = [];

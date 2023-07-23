@@ -68,11 +68,11 @@ function str_clean(string $text): string
  * array and the input string is not modified.
  * 
  * -- parameters:
- * @param $string The string to be modified.
- * @param $delimiter The substring to split the main string into seperate elements with.
- * @param $amount The number of elements to removed from the end of the main string.
+ * @param string $string The string to be modified.
+ * @param string $delimiter The substring to split the main string into seperate elements with.
+ * @param int $amount The number of elements to removed from the end of the main string.
  * 
- * @return an array containing all of the elements that were removed.
+ * @return list<string> An array containing all of the elements that were removed.
  */
 function str_multipop(string &$string, string $delimiter, int $amount): array 
 {
@@ -96,11 +96,11 @@ function str_multipop(string &$string, string $delimiter, int $amount): array
  * array and the input string is not modified.
  * 
  * -- parameters:
- * @param $string The string to be modified.
- * @param $delimiter The substring to split the main string into seperate elements with.
- * @param $amount The number of elements to removed from the start of the main string.
+ * @param string $string The string to be modified.
+ * @param string $delimiter The substring to split the main string into seperate elements with.
+ * @param int $amount The number of elements to removed from the start of the main string.
  * 
- * @return an array containing all of the elements that were removed.
+ * @return list<string> An array containing all of the elements that were removed.
  */
 function str_multishift(string &$string, string $delimiter, int $amount): array 
 {
@@ -126,10 +126,10 @@ function str_multishift(string &$string, string $delimiter, int $amount): array
  * string and the input string is not modified.
  * 
  * -- parameters:
- * @param $string The string to be modified.
- * @param $delimiter The substring to split the main string into seperate elements with.
+ * @param string $string The string to be modified.
+ * @param string $delimiter The substring to split the main string into seperate elements with.
  * 
- * @return A string containing the element removed.
+ * @return string A string containing the element removed.
  */
 function str_popex(string &$string, string $delimiter): string
 {
@@ -150,10 +150,10 @@ function str_popex(string &$string, string $delimiter): string
  * string and the input string is not modified.
  * 
  * -- parameters:
- * @param $string The string to be modified.
- * @param $delimiter The substring to split the main string into seperate elements with.
+ * @param string $string The string to be modified.
+ * @param string $delimiter The substring to split the main string into seperate elements with.
  * 
- * @return A string containing the element removed.
+ * @return string A string containing the element removed.
  */
 function str_shiftex(string &$string, string $delimiter): string
 {

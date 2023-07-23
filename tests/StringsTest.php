@@ -82,29 +82,30 @@ class StringsTest extends TestCase
         $this->assertSame(['dave', 'jane'], $popped);
     }
     
-    public function testPopex()
+    public function testPop_ex()
     {
         $str = '1,2,3,4,5,6';
-        $popped = str_popex($str, ',');
+        $item = str_popex($str, ',');
         $this->assertSame('1,2,3,4,5', $str);
-        $this->assertSame('6', $popped);
+        $this->assertSame('6', $item);
         
         $str = '1,2,3,4,5,6';
-        $popped = str_popex($str, '=');
+        $item = str_popex($str, '=');
         $this->assertSame('1,2,3,4,5,6', $str);
-        $this->assertSame('', $popped);
+        $this->assertSame('', $item);
     }
     
-    public function testShiftex()
+    public function testShift_ex()
     {
         $str = '1,2,3,4,5,6';
-        $popped = str_shiftex($str, ',');
+        $item = str_shiftex($str, ',');
         $this->assertSame('2,3,4,5,6', $str);
-        $this->assertSame('1', $popped);
+        $this->assertSame('1', $item);
         
         $str = '1,2,3,4,5,6';
-        $popped = str_shiftex($str, '=');
+        $item = str_shiftex($str, '=');
         $this->assertSame('1,2,3,4,5,6', $str);
-        $this->assertSame('', $popped);
+        $this->assertSame('', $item);
+    }
     }
 }
